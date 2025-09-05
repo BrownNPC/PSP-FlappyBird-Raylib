@@ -1,0 +1,3 @@
+Compiler: psp-gcc
+Add:
+  - "-std=c23"

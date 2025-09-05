@@ -1,18 +1,25 @@
 // Import required psp boilerplate
 #include "pspinit.h"
 #include "raylib.h"
+#include "sceneStart.h"
+#include "scenes.h"
+
 int main(void) {
-  // 2.6x smaller than 1280x720
-  const int screenWidth = 480;
-  const int screenHeight = 270;
+  auto ActiveScene = sceneStart;
+  SceneStart SCENE_START = {};
+  InitWindow(480, 270, "Flappy Bird");
 
-  InitWindow(screenWidth, screenHeight, "Change this in main.cpp");
-
+  SceneStart_Load(&SCENE_START);
   while (!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
-    DrawText("Hello World", 5, 30, 22, RED);
-    DrawFPS(5, 10);
+
+    switch (ActiveScene) {
+    case sceneStart:
+      SceneStart_Update(&SCENE_START);
+      break;
+    }
+
     EndDrawing();
   }
 }

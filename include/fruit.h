@@ -2,9 +2,9 @@
 #include <raylib.h>
 typedef struct {
   Vector2 Position, Velocity;
-} Bird;
+} Fruit;
 
 
-static inline void BirdDraw(Bird b) {
+static inline void BirdDraw(Fruit b) {
   DrawCircle(b.Position.x, b.Position.y, 20, RED);
 }

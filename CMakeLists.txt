@@ -17,7 +17,17 @@ target_include_directories(game PRIVATE include)
 # Link with raylib
 find_package(raylib REQUIRED)
 target_link_libraries(game PUBLIC raylib)
+target_link_libraries(game PUBLIC -lpthread)
 
+# link with box2d
+include(FetchContent)
+FetchContent_Declare(
+  box2d
+  GIT_REPOSITORY https://github.com/erincatto/box2d.git
+  GIT_TAG v3.1.1
+)
+FetchContent_MakeAvailable(box2d)
+target_link_libraries(game PUBLIC box2d)
 # make clangd happy
 target_compile_options(game
   PRIVATE
@@ -26,6 +36,8 @@ target_compile_options(game
     "-I=${PSPDEV}/psp/sdk/include"
     "-I${PSPDEV}/psp/include/c++/15.1.1"
 )
+
+
 create_pbp_file(
   TARGET game
   TITLE change this in CMakeLists.txt

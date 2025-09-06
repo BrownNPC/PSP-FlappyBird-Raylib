@@ -1,15 +1,16 @@
 // Import required psp boilerplate
+#include "box2d/collision.h"
 #include "pspinit.h"
 #include "raylib.h"
 #include "sceneStart.h"
 #include "scenes.h"
-
+#include <box2d/box2d.h>
 int main(void) {
   auto ActiveScene = sceneStart;
   SceneStart SCENE_START = {};
   InitWindow(480, 270, "Flappy Bird");
-
   SceneStart_Load(&SCENE_START);
+
   while (!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
